@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  isAdmin: {
+    type: Boolean,
+    // default: false,
+  },
 
 
   firstName: String,
@@ -34,6 +38,7 @@ const userSchema = new mongoose.Schema({
   socialMedia: String,
   aadhaar: String,
   pan: String,
+
 });
 
 const User = mongoose.model('User', userSchema);
