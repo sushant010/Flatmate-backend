@@ -1,5 +1,5 @@
 // controllers/findRoomController.js
-const FindRoom = require('../models/findRoom');
+const FindRoom = require('../models/FindRoom');
 
 // Create a new room search
 exports.createFindRoom = async (req, res) => {

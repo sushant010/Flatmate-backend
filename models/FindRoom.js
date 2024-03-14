@@ -36,6 +36,5 @@ const findRoomSchema = new mongoose.Schema({
   description: String
 }, { timestamps: true });
 
-const FindRoom = mongoose.model('FindRoom', findRoomSchema);
+module.exports = mongoose.model('FindRoom', findRoomSchema);
 
-module.exports = FindRoom;
