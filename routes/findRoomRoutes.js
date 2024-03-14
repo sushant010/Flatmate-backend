@@ -4,19 +4,22 @@ const router = express.Router();
 const findRoomController = require('../controllers/findRoomController');
 const jwtMiddleware = require('../middleware/jwtMiddleware');
 
-// Create a new room search
-router.post('/', jwtMiddleware, findRoomController.createFindRoom);
+router.get('/find-room/all', jwtMiddleware, findRoomController.getAllFindRooms);
 
-// Get all room searches
-router.get('/', jwtMiddleware, findRoomController.getFindRooms);
+// Create a new room search
+router.post('/find-room', jwtMiddleware, findRoomController.createFindRoom);
+
+// Get all room searches by user
+router.get('/find-room', jwtMiddleware, findRoomController.getFindRooms);
 
 // Get a room search by ID
-router.get('/:id', jwtMiddleware, findRoomController.getFindRoomById);
+router.get('/find-room/:id', jwtMiddleware, findRoomController.getFindRoomById);
 
 // Update a room search by ID
-router.put('/:id', jwtMiddleware, findRoomController.updateFindRoomById);
+router.put('/find-room/:id', jwtMiddleware, findRoomController.updateFindRoomById);
 
 // Delete a room search by ID
-router.delete('/:id', jwtMiddleware, findRoomController.deleteFindRoomById);
+router.delete('/find-room/:id', jwtMiddleware, findRoomController.deleteFindRoomById);
+
 
 module.exports = router;

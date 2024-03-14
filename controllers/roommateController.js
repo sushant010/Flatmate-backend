@@ -60,3 +60,14 @@ exports.deleteRoommateById = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+
+exports.getAllRoommates = async (req, res) => {
+  try {
+    const roommates = await Roommate.find();
+    res.json({ roommates });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};

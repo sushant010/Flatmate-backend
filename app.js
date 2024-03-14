@@ -23,7 +23,7 @@ app.use(express.json());
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 app.use('/roommate', roommateRoutes); 
-app.use('/find-room', findRoomRoutes);
+app.use('/room', findRoomRoutes);
 app.use('/verification-flat', verificationFlatRoutes);
 
 

@@ -1,6 +1,16 @@
 // controllers/findRoomController.js
 const FindRoom = require('../models/FindRoom');
 
+
+exports.getAllFindRooms = async (req, res) => {
+  try {
+    const findRoom = await FindRoom.find();
+    res.json({ findRoom });
+  }  catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
 // Create a new room search
 exports.createFindRoom = async (req, res) => {
   try {
@@ -12,7 +22,7 @@ exports.createFindRoom = async (req, res) => {
   }
 };
 
-// Get all room searches
+// Get all room searches by user 
 exports.getFindRooms = async (req, res) => {
   try {
     const { userId } = req.user;
@@ -68,3 +78,6 @@ exports.deleteFindRoomById = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+
