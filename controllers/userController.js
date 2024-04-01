@@ -221,63 +221,65 @@ exports.resendOTP = async (req, res) => {
 };
 
 
-
 exports.updatePersonalDetails = async (req, res) => {
-    try {
-      const { userId } = req.user; 
-      const { firstName, lastName, whoYouAre, gender, city, image, socialMedia, aadhaar, pan } = req.body;
-  
-      const user = await User.findById(userId);
-  
-      if (!user) {
-        return res.status(404).json({ error: 'User not found' });
-      }
-  
-      user.firstName = firstName || user.firstName;
-      user.lastName = lastName || user.lastName;
-      user.whoYouAre = whoYouAre || user.whoYouAre;
-      user.gender = gender || user.gender;
-      user.city = city || user.city;
-      user.image = image || user.image;
-      user.socialMedia = socialMedia || user.socialMedia;
-      user.aadhaar = aadhaar || user.aadhaar;
-      user.pan = pan || user.pan;
-  
-      await user.save();
-  
-      res.json({ message: 'Personal details updated successfully' });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  };
+  try {
+    const { userId } = req.user; 
+    const { firstName, lastName, whoYouAre, gender, city, image, socialMedia, aadhaar, pan, mobileNumber, email } = req.body;
 
+    const user = await User.findById(userId);
 
-  exports.getUserProfile = async (req, res) => {
-    try {
-      const { userId } = req.user; // Middleware sets req.user with authenticated user
-  
-      const user = await User.findById(userId);
-  
-      if (!user) {
-        return res.status(404).json({ error: 'User not found' });
-      }
-  
-      const userProfile = {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        whoYouAre: user.whoYouAre,
-        gender: user.gender,
-        city: user.city,
-        image: user.image,
-        socialMedia: user.socialMedia,
-        aadhaar: user.aadhaar,
-        pan: user.pan,
-      };
-  
-      res.json({ userProfile });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Internal server error' });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
     }
-  };
+
+    user.firstName = firstName || user.firstName;
+    user.lastName = lastName || user.lastName;
+    user.whoYouAre = whoYouAre || user.whoYouAre;
+    user.gender = gender || user.gender;
+    user.city = city || user.city;
+    user.image = image || user.image;
+    user.socialMedia = socialMedia || user.socialMedia;
+    user.aadhaar = aadhaar || user.aadhaar;
+    user.pan = pan || user.pan;
+    user.mobileNumber = mobileNumber || user.mobileNumber;
+    user.email = email || user.email;
+
+    await user.save();
+
+    res.json({ message: 'Personal details updated successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+exports.getUserProfile = async (req, res) => {
+  try {
+    const { userId } = req.user; // Middleware sets req.user with authenticated user
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const userProfile = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      whoYouAre: user.whoYouAre,
+      gender: user.gender,
+      city: user.city,
+      image: user.image,
+      socialMedia: user.socialMedia,
+      aadhaar: user.aadhaar,
+      pan: user.pan,
+      mobileNumber: user.mobileNumber,
+      email: user.email,
+    };
+
+    res.json({ userProfile });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
