@@ -38,6 +38,7 @@ const userSchema = new mongoose.Schema({
   socialMedia: String,
   aadhaar: String,
   pan: String,
+  age:String,
 
 });
 

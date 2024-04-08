@@ -224,7 +224,7 @@ exports.resendOTP = async (req, res) => {
 exports.updatePersonalDetails = async (req, res) => {
   try {
     const { userId } = req.user; 
-    const { firstName, lastName, whoYouAre, gender, city, image, socialMedia, aadhaar, pan, mobileNumber, email } = req.body;
+    const { firstName, lastName, whoYouAre, gender, city,age, image, socialMedia, aadhaar, pan, mobileNumber, email } = req.body;
 
     const user = await User.findById(userId);
 
@@ -243,6 +243,7 @@ exports.updatePersonalDetails = async (req, res) => {
     user.pan = pan || user.pan;
     user.mobileNumber = mobileNumber || user.mobileNumber;
     user.email = email || user.email;
+    user.age = age || user.age;
 
     await user.save();
 
@@ -275,6 +276,7 @@ exports.getUserProfile = async (req, res) => {
       pan: user.pan,
       mobileNumber: user.mobileNumber,
       email: user.email,
+      age : user.age,
     };
 
     res.json({ userProfile });
