@@ -61,10 +61,9 @@ exports.deleteRoommateById = async (req, res) => {
   }
 };
 
-
 exports.getAllRoommates = async (req, res) => {
   try {
-    const roommates = await Roommate.find();
+    const roommates = await Roommate.find().populate('userId', 'firstName lastName');
     res.json({ roommates });
   } catch (err) {
     console.error(err);
