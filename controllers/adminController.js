@@ -202,15 +202,7 @@ exports.getRoommateRequestsByUserId = async (req, res) => {
 
 const RoomRequest = require('../models/FindRoom');
 
-exports.getAllRoomRequests = async (req, res) => {
-  try {
-    const roomRequests = await RoomRequest.find();
-    res.json({ roomRequests });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-};
+ 
 
 exports.getRoomRequestById = async (req, res) => {
   try {

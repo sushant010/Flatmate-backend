@@ -4,7 +4,7 @@ const FindRoom = require('../models/FindRoom');
 
 exports.getAllFindRooms = async (req, res) => {
   try {
-    const findRoom = await FindRoom.find();
+    const findRoom = await FindRoom.find({ adminApproved: { $ne: false } }).populate('userId');
     res.json({ findRoom });
   }  catch (err) {
     console.error(err);

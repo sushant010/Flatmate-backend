@@ -33,8 +33,14 @@ const findRoomSchema = new mongoose.Schema({
     enum: ['public', 'private'],
     default: 'public'
   },
-  description: String
-}, { timestamps: true });
+  description: String,
+  adminApproved: {
+    type: Boolean,
+    default: true // Set the default value to true
+  }
+}, 
+
+{ timestamps: true });
 
 module.exports = mongoose.model('FindRoom', findRoomSchema);
 

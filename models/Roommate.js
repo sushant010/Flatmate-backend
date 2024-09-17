@@ -43,6 +43,10 @@ const roommateSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true
+  },
+  adminApproved: {
+    type: Boolean,
+    default: true // Set the default value to true
   }
 }, { timestamps: true });
 

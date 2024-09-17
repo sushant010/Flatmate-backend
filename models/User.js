@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     // default: false,
   },
+  subscribed:{
+    type: Boolean,
+    default : true,
+  },
 
 
   firstName: String,
